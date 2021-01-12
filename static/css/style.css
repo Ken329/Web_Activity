@@ -1,0 +1,89 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/*header*/
+.header-container{
+    width: 100%;
+    height: 140px;
+    background-color:#7084ED;
+    text-align: center;
+}
+.header-icon-div{
+    position: absolute;
+    left: 70px;
+    top: 40px;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 1px 15px 5px #7084ED;
+}
+.header-icon{
+    color: #7084ED;
+    cursor: pointer;
+    padding-top: 10px;
+}
+.header-container-p{
+    display: inline-block;
+    color: white;
+    margin-top: 5px;
+}
+.header-container-h1{
+    color: white;
+}
+.side-menu-container{
+    width: 200px;
+    height: 100%;
+    background-color: #7084ED;
+    position: fixed;
+    border: 1px solid white;
+    transition: .5s;
+    display: none;
+}
+.side-menu-li{
+    width: 100%;
+    height: 50px;
+    padding-left: 20px;
+    padding-top: 15px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+.side-menu-li:hover{
+    box-shadow: 0px 1px 15px 5px white;
+}
+.side-menu-icon{
+    padding-right: 10px;
+}
+.main-body-container{
+    width: 100%;
+    text-align: center;
+}
+.body-container-insert{
+    width: 500px;
+    height: 60px;
+    background-color: white;
+    box-shadow: 0px 1px 15px 5px #7084ED;
+    margin-top: 30px;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 20px;
+}
+.body-container-insert:focus{
+    outline: none;
+}
+.body-container-enter{
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 1px 15px 5px #7084ED;
+    border-radius: 20px;
+    border: none;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.body-container-enterI{
+    color: #7084ED;
+}

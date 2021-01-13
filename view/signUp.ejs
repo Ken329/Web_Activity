@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+</head>
+<body>
+    <header class="header-container">
+        <i class="fas fa-6x fa-users header-container-p"></i>
+        <h1 class="header-container-h1">User Activity - Sign Up</h1>
+    </header>
+    <form  action="/new_user" method="post" class="signUp-main-container">
+        <p class="signUp-form-p">Create new username</p>
+        <input type="text" class="signUp-form-input" name="signUp_username" id="signUp_username" placeholder="Username">
+        <p class="signUp-form-p">Create new password</p>
+        <input type="text" class="signUp-form-input" name="signUp_password" id="signUp_password" placeholder="Password">
+        <p class="signUp-form-p">Confirm username</p>
+        <input type="text" class="signUp-form-input" name="signUp_conPass" id="signUp_conPass" placeholder="Confirm password">
+        <p class="signUp-form-p">Create new username</p>
+        <input type="text" class="signUp-form-input" name="signUp_age" id="signUp_age" placeholder="Age">
+        <button type="submit" class="signUp-form-button">Sign Up</button>
+    </form>
+    <script src="js/script.js"></script>
+</body>
+</html>

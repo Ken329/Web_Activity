@@ -1,5 +1,6 @@
 var iconSideMenu = document.getElementById('side_menu_icon');
 var sideMenu = document.getElementById('side_menu_container');
+var btnSignUp = document.getElementById('signUp')
 var check = true;
 
 iconSideMenu.addEventListener('click', function(){

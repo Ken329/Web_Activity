@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+</head>
+<body>
+    <header class="header-container">
+        <i class="fas fa-6x fa-users header-container-p"></i>
+        <h1 class="header-container-h1">User Activity - Login</h1>
+    </header>
+
+    <div class="login-main-container">
+        <form action="/login" method="POST">
+            <p class="login-main-p">Username</p>
+            <input type="text" class="login-main-input" id="login_username" name="login_username" placeholder="Username">
+            <p class="login-main-p">Password</p>
+            <input type="text" class="login-main-input" id="login_password" name="login_password" placeholder="Password">
+            <button type="submit" class="login-main-button">Login</button>
+        </form>
+        <a href="/signUp"><p class="login-main-signUp">Do you have an account? Sign Up</p></a>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

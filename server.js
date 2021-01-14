@@ -7,6 +7,7 @@ var session = require('express-session')
 var flush = require('connect-flash');
 const e = require('express');
 const port = 3000
+var username;
 
 app.use(express.static('static'));
 app.use('/css', express.static(__dirname + 'static/css'))
@@ -47,15 +48,6 @@ connection.connect(function(err){
 
     console.log('Connected ...')
 })
-app.post('/inserting', urlEncode, (req, res)=>{
-    var sql = "insert into activity(activity_id, activity_name)values(null, '"+req.body.activity+"')";
-    connection.query(sql, function(err){
-        if(err) throw err;
-        res.render('index', {title: 'Data Saved',
-        message: 'Data Saved Successfully'})
-    })
-    connection.end()
-})
 app.post('/new_user', urlEncode, (req, res)=>{
     var user = req.body.signUp_username
     var pass = req.body.signUp_password
@@ -83,9 +75,23 @@ app.post('/login', urlEncode, (req, res)=>{
         if(result == ""){
             res.send('Wrong username or password, please check')
         }else{
+            username = user
             res.render('index')
         }
     })
+})
+app.post('/inserting', urlEncode, (req, res)=>{
+    //var sql = "insert into activity(activity_id, activity_name)values(null, '"+req.body.activity+"')";
+    //connection.query(sql, function(err){
+    //    if(err) throw err;
+    //    res.render('index', {title: 'Data Saved',
+    //    message: 'Data Saved Successfully'})
+    //})
+    //connection.end()
+    res.send(username)
+})
+app.post('/logout', urlEncode, (req, res)=>{
+    res.render('login')
 })
 
 app.listen(port, () => console.info('Listening in port ${port}'))

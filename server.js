@@ -48,6 +48,9 @@ connection.connect(function(err){
 
     console.log('Connected ...')
 })
+
+const dbService = require('./static/js/dbService')
+
 app.post('/new_user', urlEncode, (req, res)=>{
     var user = req.body.signUp_username
     var pass = req.body.signUp_password
@@ -81,14 +84,44 @@ app.post('/login', urlEncode, (req, res)=>{
     })
 })
 app.post('/inserting', urlEncode, (req, res)=>{
-    //var sql = "insert into activity(activity_id, activity_name)values(null, '"+req.body.activity+"')";
-    //connection.query(sql, function(err){
-    //    if(err) throw err;
-    //    res.render('index', {title: 'Data Saved',
-    //    message: 'Data Saved Successfully'})
-    //})
-    //connection.end()
-    res.send(username)
+    var activity = req.body.activity
+    if(activity == ""){
+        res.send("Please enter something first")
+    }else{
+        var sql = "insert into activity(post_name, post_activity)values('"+username+"', '"+req.body.activity+"')";
+        connection.query(sql, function(err){
+            if(err) throw err;
+            res.render('index', {title: 'Data Saved',
+            message: 'Data Saved Successfully'})
+        })
+    }
+})
+app.get('/getAll', urlEncode, (req, res)=>{
+    const db = dbService.getDbServiceInstance()
+
+    const result = db.getAllData()
+    result
+    .then(data => res.json({data : data}))
+    .catch(err => console.log(err))
+
+    
+})
+app.get('/getPostData', urlEncode, (req, res)=>{
+    const db = dbService.getDbServiceInstance()
+
+    const result = db.getPostData(username)
+    result
+    .then(data => res.json({data : data}))
+    .catch(err => console.log(err))
+})
+app.delete('/delete/:id', urlEncode, (req, res)=>{
+    const {id} = req.params
+    const db = dbService.getDbServiceInstance()
+
+    const result = db.deletePost(id)
+    result
+    .then(data => res.json({success: data}))
+    .catch(err => console.log(err))
 })
 app.post('/logout', urlEncode, (req, res)=>{
     res.render('login')

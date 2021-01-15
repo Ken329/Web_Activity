@@ -76,8 +76,8 @@ a{
 .confirmation-box{
     width: 300px;
     height: 105px;
-    margin-top: 100px;
-    position: fixed;
+    margin-top: 30px;
+    position: relative;
     left: 40%;
     box-shadow: 0px 1px 15px 5px #7084ED;
     display: none;
@@ -100,6 +100,9 @@ a{
     color: black;
     font-size: 13.5px;
     cursor: pointer;
+}
+.confirm-btn2:focus{
+    outline: none;
 }
 .confirm-button{
     width: 60px;
@@ -144,6 +147,58 @@ a{
 }
 .body-container-enterI{
     color: #7084ED;
+}
+table{
+    margin: 40px auto;
+}
+table, th, td{
+    border-collapse: collapse;
+    background-color: #7084ED;
+    border: 1px solid white;
+    color: white;
+    font-size: 20px;
+}
+th, td{
+    padding: 10px;
+    text-align: center;
+}
+
+/*index post*/
+.post-body-container{
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+.post-input{
+    display: none;
+}
+.post-reload-div{
+    width: 80px;
+    height: 40px;
+    background-color: #7084ED;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+.post-reload-icon{
+    color: white;
+    padding-top: 3px;
+    cursor: pointer;
+}
+.edit-row-btn, .delete-row-btn{
+    width: 50px;
+    height: 25px;
+    border: 2px solid white;
+    background-color: #7084ED;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.edit-row-btn:focus, .delete-row-btn:focus{
+    outline: none;
+}
+.edit-row-btn:hover, .delete-row-btn:hover{
+    border: 2px solid black;
 }
 
 /*sign up body*/

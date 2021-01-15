@@ -17,22 +17,16 @@
         <h1 class="header-container-h1">User Activity</h1>
     </header>
     <div id="side_menu_container" class="side-menu-container">
-        <div class="side-menu-button"><i class="fas fa-mail-bulk  side-menu-icon"></i>View Post</div>
-        <div class="side-menu-button"><i class="fas fa-history  side-menu-icon"></i>Delete History</div>
+        <div id="side_menu_home" class="side-menu-button"><i class="fas fa-home  side-menu-icon"></i>Home</div>
+        <div id="side_menu_post" class="side-menu-button"><i class="fas fa-mail-bulk  side-menu-icon"></i>View Post</div>
         <div class="side-menu-button"><i class="fas fa-user-friends  side-menu-icon"></i>Member</div>
         <div id="side_menu_logout" class="side-menu-button"><i class="fas fa-sign-out-alt  side-menu-icon"></i>Logout</div>
     </div>
     <div id="drop_down_menu" class="drop-down-menu">
-        <div class="side-menu-button"><i class="fas fa-mail-bulk  side-menu-icon"></i>View Post</div>
-        <div class="side-menu-button"><i class="fas fa-history  side-menu-icon"></i>Delete History</div>
+        <div id="side_menu_home" class="side-menu-button"><i class="fas fa-home  side-menu-icon"></i>Home</div>
+        <div id="side_menu_post" class="side-menu-button"><i class="fas fa-mail-bulk  side-menu-icon"></i>View Post</div>
         <div class="side-menu-button"><i class="fas fa-user-friends  side-menu-icon"></i>Member</div>
         <div id="side_menu_logout" class="side-menu-button"><i class="fas fa-sign-out-alt  side-menu-icon"></i>Logout</div>
-    </div>
-    <div class="main-body-container">
-        <form action="/inserting" method="POST">
-            <input type="text" name="activity" id="activity" class="body-container-insert" placeholder="Activity"></input>
-            <button class="body-container-enter" type="submit"><i class="fas fa-2x fa-share body-container-enterI"></i></input></button>
-        </form>
     </div>
     <div id="confirm_box" class="confirmation-box">
         <form action="/logout" method="POST" class="confirm-form">
@@ -42,6 +36,40 @@
             <button class="confirm-button confirm-buttonB confirm-btn2" type="submit">Confirm</button>
         </form>
     </div>
+    <div id="main_container" class="main-body-container">
+        <form action="/inserting" method="POST">
+            <input type="text" name="activity" id="activity" class="body-container-insert" placeholder="Activity"></input>
+            <button class="body-container-enter" type="submit"><i class="fas fa-2x fa-share body-container-enterI"></i></button>
+        </form>
+        <table class="table">
+            <thead>
+                <th>ID: </th>
+                <th>Name: </th>
+                <th>Activity: </th>
+            </thead>
+            <tbody id="main_tbody"></tbody>
+        </table>
+    </div>
+    <div id="post_container" class="post-body-container">
+        <div class="post-reload-div">
+            <i id="post_reload" class="fas fa-2x fa-sync-alt post-reload-icon"></i>
+        </div>
+        <div id="post_input" class="post-input">
+            <input type="text" name="post_edit" id="post_edit" class="body-container-insert" placeholder="Edit"></input>
+            <button id="edit_input" class="body-container-enter" type="submit"><i class="fas fa-2x fa-share body-container-enterI"></i></button>
+        </div>
+        <table class="table">
+            <thead>
+                <th>ID: </th>
+                <th>Name: </th>
+                <th>Activity: </th>
+                <th>Edit: </th>
+                <th>Delete: </th>
+            </thead>
+            <tbody id="post_tbody"></tbody>
+        </table>
+    </div>
+    
     <script src="js/script.js"></script>
 </body>
 </html> 

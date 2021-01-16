@@ -51,13 +51,45 @@ class dbService{
             console.log(error)
         }
     }
-    async deletePost(id){
-        id = parseInt(id, 10)
+    async insertPost(activity, name){
         try{
+            const response = await new Promise((resolve, reject)=>{
+                const query = "insert into activity(post_name, post_activity, post_id)values(?, ?, ?)"
+    
+                connection.query(query, [name, activity, null], (err, result)=>{
+                    if(err) throw err   
+                    resolve(result.affectedRows);
+                })
+            })
+            return response === 1 ? true : false
+        }catch(error){
+            console.log(error)
+            return false
+        }
+    }
+    async deletePost(id){
+        try{
+            id = parseInt(id, 10)
             const response = await new Promise((resolve, reject)=>{
                 const query = "delete from activity where post_id = ?"
     
                 connection.query(query, [id], (err, result)=>{
+                    if(err) throw err   
+                    resolve(result.affectedRows);
+                })
+            })
+            return response === 1 ? true : false
+        }catch(error){
+            console.log(error)
+            return false
+        }
+    }
+    async updatePost(id, name){
+        try{
+            const response = await new Promise((resolve, reject)=>{
+                const query = "update activity set post_activity = ? where post_id = ?"
+    
+                connection.query(query, [name, id], (err, result)=>{
                     if(err) throw err   
                     resolve(result.affectedRows);
                 })

@@ -37,10 +37,8 @@
         </form>
     </div>
     <div id="main_container" class="main-body-container">
-        <form action="/inserting" method="POST">
-            <input type="text" name="activity" id="activity" class="body-container-insert" placeholder="Activity"></input>
-            <button class="body-container-enter" type="submit"><i class="fas fa-2x fa-share body-container-enterI"></i></button>
-        </form>
+        <input type="text" name="activity" id="body_container_activity" class="body-container-insert" placeholder="Activity"></input>
+        <button id="body_container_enter" class="body-container-enter" type="submit"><i class="fas fa-2x fa-share body-container-enterI"></i></button>
         <table class="table">
             <thead>
                 <th>ID: </th>
@@ -51,12 +49,9 @@
         </table>
     </div>
     <div id="post_container" class="post-body-container">
-        <div class="post-reload-div">
-            <i id="post_reload" class="fas fa-2x fa-sync-alt post-reload-icon"></i>
-        </div>
         <div id="post_input" class="post-input">
-            <input type="text" name="post_edit" id="post_edit" class="body-container-insert" placeholder="Edit"></input>
-            <button id="edit_input" class="body-container-enter" type="submit"><i class="fas fa-2x fa-share body-container-enterI"></i></button>
+            <input type="text" id="post_edit" class="body-container-insert" placeholder="Edit"></input>
+            <button id="post_btn" class="body-container-enter" type="submit"><i class="fas fa-2x fa-share body-container-enterI"></i></button>
         </div>
         <table class="table">
             <thead>

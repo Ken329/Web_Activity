@@ -51,6 +51,23 @@ connection.connect(function(err){
 
 const dbService = require('./static/js/dbService')
 
+// login
+app.post('/login', urlEncode, (req, res)=>{
+    var user = req.body.login_username
+    var pass = req.body.login_password
+
+    var sql = "select user_name, user_password from user where user_name = '"+user+"' AND user_password = '"+pass+"'" ;
+    connection.query(sql, function(err, result){
+        if(err) throw err
+        if(result == ""){
+            res.send('Wrong username or password, please check')
+        }else{
+            username = user
+            res.render('index')
+        }
+    })
+})
+// signup
 app.post('/new_user', urlEncode, (req, res)=>{
     var user = req.body.signUp_username
     var pass = req.body.signUp_password
@@ -68,34 +85,11 @@ app.post('/new_user', urlEncode, (req, res)=>{
         })
     }
 })
-app.post('/login', urlEncode, (req, res)=>{
-    var user = req.body.login_username
-    var pass = req.body.login_password
-
-    var sql = "select user_name, user_password from user where user_name = '"+user+"' AND user_password = '"+pass+"'" ;
-    connection.query(sql, function(err, result){
-        if(err) throw err
-        if(result == ""){
-            res.send('Wrong username or password, please check')
-        }else{
-            username = user
-            res.render('index')
-        }
-    })
+// logout
+app.post('/logout', urlEncode, (req, res)=>{
+    res.render('login')
 })
-app.post('/inserting', urlEncode, (req, res)=>{
-    var activity = req.body.activity
-    if(activity == ""){
-        res.send("Please enter something first")
-    }else{
-        var sql = "insert into activity(post_name, post_activity)values('"+username+"', '"+req.body.activity+"')";
-        connection.query(sql, function(err){
-            if(err) throw err;
-            res.render('index', {title: 'Data Saved',
-            message: 'Data Saved Successfully'})
-        })
-    }
-})
+// get all data for home page
 app.get('/getAll', urlEncode, (req, res)=>{
     const db = dbService.getDbServiceInstance()
 
@@ -103,9 +97,8 @@ app.get('/getAll', urlEncode, (req, res)=>{
     result
     .then(data => res.json({data : data}))
     .catch(err => console.log(err))
-
-    
 })
+//get all data for post page
 app.get('/getPostData', urlEncode, (req, res)=>{
     const db = dbService.getDbServiceInstance()
 
@@ -114,6 +107,18 @@ app.get('/getPostData', urlEncode, (req, res)=>{
     .then(data => res.json({data : data}))
     .catch(err => console.log(err))
 })
+// inserting post data
+app.post('/inserting/:activity', urlEncode, (req, res)=>{
+    const {activity} = req.params
+    
+    const db = dbService.getDbServiceInstance()
+
+    const result = db.insertPost(activity, username)
+    result
+    .then(data => res.json({success : data}))
+    .catch(err => console.log(err))
+})
+// deleting post data
 app.delete('/delete/:id', urlEncode, (req, res)=>{
     const {id} = req.params
     const db = dbService.getDbServiceInstance()
@@ -123,8 +128,17 @@ app.delete('/delete/:id', urlEncode, (req, res)=>{
     .then(data => res.json({success: data}))
     .catch(err => console.log(err))
 })
-app.post('/logout', urlEncode, (req, res)=>{
-    res.render('login')
+// altering post data
+app.patch('/update', urlEncode, (req, res)=>{
+    const id = req.query.id
+    const name = req.query.name
+    const db = dbService.getDbServiceInstance()
+
+    const result = db.updatePost(id, name)
+
+    result
+    .then(data => res.json({success : data}))
+    .catch(err => console.log(err))
 })
 
 app.listen(port, () => console.info('Listening in port ${port}'))

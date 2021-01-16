@@ -145,6 +145,9 @@ a{
     margin-left: 20px;
     cursor: pointer;
 }
+.body-container-enter:focus{
+    outline: none;
+}
 .body-container-enterI{
     color: #7084ED;
 }

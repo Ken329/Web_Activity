@@ -31,9 +31,6 @@ iconSideMenu.addEventListener('click', function(){
         check = true;
     }
 })
-document.getElementById('post_reload').addEventListener('click', function(){
-    location.reload()
-})
 
 btnLogout.addEventListener('click', function(){
     confirmBox.style.display = "block"
@@ -110,17 +107,51 @@ document.getElementById('post_tbody').addEventListener('click', function(event){
         deletePost(event.target.dataset.id)
     }
     if(event.target.className === 'edit-row-btn'){
-        document.querySelector('#post_input').style.display = "block"
         editPost(event.target.dataset.id)
     }
+})
+
+// insert, update and delete post
+const btnUpdate = document.getElementById('post_btn')
+document.getElementById('body_container_enter').addEventListener('click', function(){
+    var input = document.getElementById('body_container_activity').value
+    fetch('http://localhost:3000/inserting/' + input, {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.success){
+            document.getElementById('body_container_activity').value = ''
+            location.reload()
+        }
+    })
 })
 function deletePost(id){
     fetch('http://localhost:3000/delete/' + id, {
         method: 'DELETE'
     })
-    .then(res => res.json())
-    .then(data => console.log(data))
+    .then(response => response.json())
+    .then(data => {
+        if(data.success){
+            location.reload()
+        }
+    })
 }
-document.getElementById('edit_input').addEventListener('click', function(){
-    const input = document.getElementById('post_edit')
-})
+function editPost(id){
+    document.querySelector('#post_input').style.display = "block"
+    document.querySelector('#post_btn').dataset.id = id
+}
+btnUpdate.onclick = function(){
+    var id = document.querySelector('#post_btn').dataset.id
+    var input = document.getElementById('post_edit').value
+    fetch('http://localhost:3000/update?id='+id+"&name="+input,{
+        method: 'PATCH',
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.success){
+            document.getElementById('post_edit').value = ''
+            location.reload()
+        }
+    })
+}

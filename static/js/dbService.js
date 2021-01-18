@@ -37,10 +37,54 @@ class dbService{
             console.log(error)
         }
     }
+    async getUserData(name){
+        try{
+            const response = await new Promise((resolve, reject)=>{
+                const query = "select * from user where user_name = '"+name+"'"
+                connection.query(query, (err, result)=>{
+                    if(err) throw err
+                    resolve(result)
+                })
+            })
+            return response
+        }catch(error){
+            console.log(error)
+        }
+    }
+    async updateUser(id, name, pass, age){
+        try{
+            const response = await new Promise((resolve, reject)=>{
+                const query = "update user set user_id = ?, user_password = ?, user_age = ? where user_name = ?"
+    
+                connection.query(query, [id, pass, age, name], (err, result)=>{
+                    if(err) throw err   
+                    resolve(result.affectedRows);
+                })
+            })
+            return response === 1 ? true : false
+        }catch(error){
+            console.log(error)
+            return false
+        }
+    }
     async getPostData(name){
         try{
             const response = await new Promise((resolve, reject)=>{
                 const query = "select * from activity where post_name = '"+name+"'"
+                connection.query(query, (err, result)=>{
+                    if(err) throw err
+                    resolve(result)
+                })
+            })
+            return response
+        }catch(error){
+            console.log(error)
+        }
+    }
+    async getMemberData(){
+        try{
+            const response = await new Promise((resolve, reject)=>{
+                const query = "select user_id, user_name, user_age from user"
                 connection.query(query, (err, result)=>{
                     if(err) throw err
                     resolve(result)

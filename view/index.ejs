@@ -14,18 +14,20 @@
             <i id="side_menu_icon" class="fas fa-2x fa-align-justify header-icon"></i>
         </div>
         <i class="fas fa-6x fa-users header-container-p"></i>
-        <h1 class="header-container-h1">User Activity</h1>
+        <h1 id="header_title" class="header-container-h1">User Activity - Home</h1>
     </header>
     <div id="side_menu_container" class="side-menu-container">
         <div id="side_menu_home" class="side-menu-button"><i class="fas fa-home  side-menu-icon"></i>Home</div>
+        <div id="side_menu_user" class="side-menu-button"><i class="fas fa-user  side-menu-icon"></i>User</div>
         <div id="side_menu_post" class="side-menu-button"><i class="fas fa-mail-bulk  side-menu-icon"></i>View Post</div>
-        <div class="side-menu-button"><i class="fas fa-user-friends  side-menu-icon"></i>Member</div>
+        <div id="side_menu_member" class="side-menu-button"><i class="fas fa-user-friends  side-menu-icon"></i>Member</div>
         <div id="side_menu_logout" class="side-menu-button"><i class="fas fa-sign-out-alt  side-menu-icon"></i>Logout</div>
     </div>
     <div id="drop_down_menu" class="drop-down-menu">
         <div id="side_menu_home" class="side-menu-button"><i class="fas fa-home  side-menu-icon"></i>Home</div>
+        <div id="side_menu_user" class="side-menu-button"><i class="fas fa-user  side-menu-icon"></i>User</div>
         <div id="side_menu_post" class="side-menu-button"><i class="fas fa-mail-bulk  side-menu-icon"></i>View Post</div>
-        <div class="side-menu-button"><i class="fas fa-user-friends  side-menu-icon"></i>Member</div>
+        <div id="side_menu_member" class="side-menu-button"><i class="fas fa-user-friends  side-menu-icon"></i>Member</div>
         <div id="side_menu_logout" class="side-menu-button"><i class="fas fa-sign-out-alt  side-menu-icon"></i>Logout</div>
     </div>
     <div id="confirm_box" class="confirmation-box">
@@ -48,6 +50,17 @@
             <tbody id="main_tbody"></tbody>
         </table>
     </div>
+    <div id="user_container" class="user-body-container">
+        <p class="user-container-p">Name</p>
+        <div class="user-input user-name-input"><p id="user_name"></p></div>
+        <p class="user-container-p">ID</p>
+        <input type="text" name="user_id" id="user_id" class="user-input" placeholder="User Id">
+        <p class="user-container-p">Password</p>
+        <input type="text" name="user_pass" id="user_pass" class="user-input" placeholder="User Password">
+        <p class="user-container-p">Age</p>
+        <input type="text" name="user_age" id="user_age" class="user-input" placeholder="User Age">
+        <button id="user_btn" class="user-container-button">Edit</button>
+    </div>
     <div id="post_container" class="post-body-container">
         <div id="post_input" class="post-input">
             <input type="text" id="post_edit" class="body-container-insert" placeholder="Edit"></input>
@@ -62,6 +75,16 @@
                 <th>Delete: </th>
             </thead>
             <tbody id="post_tbody"></tbody>
+        </table>
+    </div>
+    <div id="member_container" class="member-body-container">
+        <table class="table">
+            <thead>
+                <th>User Id: </th>
+                <th>User Name: </th>
+                <th>User Age: </th>
+            </thead>
+            <tbody id="member_tbody"></tbody>
         </table>
     </div>
     

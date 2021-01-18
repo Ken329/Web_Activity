@@ -98,11 +98,43 @@ app.get('/getAll', urlEncode, (req, res)=>{
     .then(data => res.json({data : data}))
     .catch(err => console.log(err))
 })
+// get all data for user page
+app.get('/getUserData', urlEncode, (req, res)=>{
+    const db = dbService.getDbServiceInstance()
+
+    const result = db.getUserData(username)
+    result
+    .then(data => res.json({data : data}))
+    .catch(err => console.log(err))
+})
+// update data for user page
+app.patch('/updateUser', urlEncode, (req, res)=>{
+    const id = req.query.id
+    const name = req.query.name
+    const pass = req.query.pass
+    const age = req.query.age
+    const db = dbService.getDbServiceInstance()
+
+    const result = db.updateUser(id, name, pass, age)
+
+    result
+    .then(data => res.json({success : data}))
+    .catch(err => console.log(err))
+})
 //get all data for post page
 app.get('/getPostData', urlEncode, (req, res)=>{
     const db = dbService.getDbServiceInstance()
 
     const result = db.getPostData(username)
+    result
+    .then(data => res.json({data : data}))
+    .catch(err => console.log(err))
+})
+//get all data for member page
+app.get('/getMemberData', urlEncode, (req, res)=>{
+    const db = dbService.getDbServiceInstance()
+
+    const result = db.getMemberData()
     result
     .then(data => res.json({data : data}))
     .catch(err => console.log(err))
